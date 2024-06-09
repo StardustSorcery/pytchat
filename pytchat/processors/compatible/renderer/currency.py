@@ -29,6 +29,7 @@ symbols = {
     "€": {"fxtext": "EUR", "jptext": "欧・ユーロ"},
     "₹": {"fxtext": "INR", "jptext": "インド・ルピー"},
     "￥": {"fxtext": "JPY", "jptext": "日本・円"},
+    "\xa5": {"fxtext": "JPY", "jptext": "日本・円"},
     "PEN\xa0": {"fxtext": "PEN", "jptext": "ペルー・ヌエボ・ソル"},
     "ARS\xa0": {"fxtext": "ARS", "jptext": "アルゼンチン・ペソ"},
     "CLP\xa0": {"fxtext": "CLP", "jptext": "チリ・ペソ"},
