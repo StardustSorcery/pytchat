@@ -25,8 +25,8 @@ class LiveChatPaidMessageRenderer(BaseRenderer):
                 "amountMicros": amountMicros,
                 "currency": currency.symbols[symbol]["fxtext"] if currency.symbols.get(symbol) else symbol,
                 "amountDisplayString": amountDisplayString,
+                "userComment": message,
                 "tier": 0,
-                "backgroundColor": self.renderer.get("bodyBackgroundColor", 0)
             }
         }
 
