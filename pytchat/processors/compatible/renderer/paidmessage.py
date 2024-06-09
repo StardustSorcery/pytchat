@@ -22,7 +22,7 @@ class LiveChatPaidMessageRenderer(BaseRenderer):
             "hasDisplayContent": True,
             "displayMessage": amountDisplayString + " from " + authorName + ': \"' + message + '\"',
             "superChatDetails": {
-                "amountMicros": amountMicros,
+                "amountMicros": str(amountMicros),
                 "currency": currency.symbols[symbol]["fxtext"] if currency.symbols.get(symbol) else symbol,
                 "amountDisplayString": amountDisplayString,
                 "userComment": message,
