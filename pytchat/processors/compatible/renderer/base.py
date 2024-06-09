@@ -49,7 +49,8 @@ class BaseRenderer:
                 for r in runs:
                     if r:
                         if r.get('emoji'):
-                            message += r['emoji'].get('shortcuts', [''])[0]
+                            is_custom_emoji = r['emoji'].get('isCustomEmoji', False)
+                            message += r['emoji'].get('shortcuts', [''])[0] if is_custom_emoji else r['emoji'].get('emojiId')
                         else:
                             message += r.get('text', '')
         return message
