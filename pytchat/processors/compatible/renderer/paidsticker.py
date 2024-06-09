@@ -27,7 +27,7 @@ class LiveChatPaidStickerRenderer(BaseRenderer):
                     "altText": "",
                     "language": ""
                 },
-                "amountMicros": amountMicros,
+                "amountMicros": str(amountMicros),
                 "currency": currency.symbols[symbol]["fxtext"] if currency.symbols.get(symbol) else symbol,
                 "amountDisplayString": amountDisplayString,
                 "tier": 0,
