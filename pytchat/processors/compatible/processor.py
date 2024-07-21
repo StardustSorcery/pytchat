@@ -22,6 +22,9 @@ class CompatibleProcessor(ChatProcessor):
 
         if chat_components:
             for chat_component in chat_components:
+                if chat_component is None:
+                    continue
+
                 timeout += chat_component.get('timeout', 0)
                 chatdata = chat_component.get('chatdata')
 
