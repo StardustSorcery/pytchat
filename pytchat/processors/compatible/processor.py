@@ -1,3 +1,4 @@
+import re
 from .renderer.textmessage import LiveChatTextMessageRenderer
 from .renderer.paidmessage import LiveChatPaidMessageRenderer
 from .renderer.paidsticker import LiveChatPaidStickerRenderer
@@ -61,7 +62,7 @@ class CompatibleProcessor(ChatProcessor):
 
             rd["kind"] = "youtube#liveChatMessage"
             rd["etag"] = ""
-            rd["id"] = 'LCC.' + renderer.get_id()
+            rd["id"] = 'LCC.' + re.sub("^C", "E", renderer.get_id())
             rd["snippet"] = renderer.get_snippet()
             rd["authorDetails"] = renderer.get_authordetails()
         except (KeyError, TypeError, AttributeError) as e:
