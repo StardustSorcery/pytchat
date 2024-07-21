@@ -21,12 +21,13 @@ class CompatibleProcessor(ChatProcessor):
         ret["nextPageToken"] = ""
 
         if chat_components:
-            for chat_component in chat_components:
-                timeout += chat_component.get('timeout', 0)
-                chatdata = chat_component.get('chatdata')
-
+            for component in chat_components:
+                if component is None:
+                    continue
+                timeout += component.get('timeout', 0)
+                chatdata = component.get('chatdata')
                 if chatdata is None:
-                    break
+                    continue
                 for action in chatdata:
                     if action is None:
                         continue
@@ -34,10 +35,10 @@ class CompatibleProcessor(ChatProcessor):
                         continue
                     if action['addChatItemAction'].get('item') is None:
                         continue
-
                     chat = self.parse(action)
                     if chat:
                         chatlist.append(chat)
+
         ret["pollingIntervalMillis"] = int(timeout * 1000)
         ret["pageInfo"] = {
             "totalResults": len(chatlist),
