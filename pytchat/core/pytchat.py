@@ -21,6 +21,8 @@ class PytchatCore:
     ---------
     video_id : str
 
+    channel_id: str
+
     seektime : int
         start position of fetching chat (seconds).
         This option is valid for archived chat only.
@@ -59,6 +61,7 @@ class PytchatCore:
     '''
 
     def __init__(self, video_id,
+                 channel_id=None,
                  seektime=-1,
                  processor=DefaultProcessor(),
                  client = httpx.Client(http2=True),
@@ -71,6 +74,7 @@ class PytchatCore:
                  ):
         self._client = client
         self._video_id = util.extract_video_id(video_id)
+        self.channel_id = channel_id
         self.seektime = seektime
         if isinstance(processor, tuple):
             self.processor = Combinator(processor)
@@ -103,7 +107,7 @@ class PytchatCore:
             """
             self.continuation = liveparam.getparam(
                 self._video_id,
-                channel_id=util.get_channelid(self._client, self._video_id),
+                channel_id=self.channel_id or util.get_channelid(self._client, self._video_id),
                 past_sec=3)
 
     def _get_chat_component(self):
